@@ -4,4 +4,4 @@ const taskSchema = new Schema({
   text: String,
   isCheck: Boolean,
 });
-module.exports = Taks = mongoose.model("Task", taskSchema);
+module.exports = Task = mongoose.model("Tasks", taskSchema);
