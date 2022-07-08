@@ -17,11 +17,11 @@ const init = () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    app.listen(8000, () => {
-      console.log(`App listening: http://localhost:8000/${process.env.PORT}`);
+    app.listen(process.env.PORT, () => {
+      console.log(`App listening: http://localhost:8000/`);
     });
   } catch (error) {
-    console.error("error");
+    console.error(error);
     process.exit(1);
   }
 };
