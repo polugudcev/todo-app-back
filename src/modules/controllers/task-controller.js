@@ -5,8 +5,7 @@ const getAllTasks = async (req, res) => {
     const result = await Task.find();
     res.send(result);
   } catch (error) {
-    res.send(error);
-    console.error("error");
+    res.status(404).send({ message: "error" });
   }
 };
 
@@ -16,22 +15,17 @@ const createNewTask = async (req, res) => {
     const data = await newTask.save();
     res.send(data);
   } catch (error) {
-    res.send(error);
-    console.error("error");
+    res.status(404).send({ message: "error" });
   }
 };
 
 const changeTaskInfo = async (req, res) => {
-  const { _id, text} = req.body;
+  const { _id, text } = req.body;
   try {
-    const result = await Task.updateOne(
-      { _id: _id },
-      { $set: { _id, text } }
-    );
+    const result = await Task.updateOne({ _id: _id }, { $set: { _id, text } });
     res.send(result);
   } catch (error) {
-    res.send(error);
-    console.error("error");
+    res.status(404).send({ message: "error" });
   }
 };
 
@@ -44,8 +38,7 @@ const changeTaskCheckbox = async (req, res) => {
     );
     res.send(result);
   } catch (error) {
-    res.send(error);
-    console.error("error");
+    res.status(404).send({ message: "error" });
   }
 };
 
@@ -54,8 +47,7 @@ const deleteTask = async (req, res) => {
     const result = await Task.deleteOne(req.body);
     res.send(result);
   } catch (error) {
-    res.send(error);
-    console.error("error");
+    res.status(404).send({ message: "error" });
   }
 };
 
@@ -64,5 +56,5 @@ module.exports = {
   createNewTask,
   changeTaskInfo,
   changeTaskCheckbox,
-  deleteTask,
+  deleteTask
 };
