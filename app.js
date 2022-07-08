@@ -18,7 +18,7 @@ const init = () => {
       useUnifiedTopology: true,
     });
     app.listen(8000, () => {
-      console.log(`App listening: http://localhost:8000/`);
+      console.log(`App listening: http://localhost:8000/${process.env.PORT}`);
     });
   } catch (error) {
     console.error("error");

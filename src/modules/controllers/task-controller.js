@@ -3,9 +3,9 @@ const Task = require("../../model/task");
 const getAllTasks = async (req, res) => {
   try {
     const result = await Task.find();
-    res.send(result);
+    res.status(200).send(result);
   } catch (error) {
-    res.status(404).send({ message: "error" });
+    res.status(400).send({ message: "error" });
   }
 };
 
@@ -13,9 +13,9 @@ const createNewTask = async (req, res) => {
   try {
     const newTask = new Task(req.body);
     const data = await newTask.save();
-    res.send(data);
+    res.status(200).send(data);
   } catch (error) {
-    res.status(404).send({ message: "error" });
+    res.status(400).send({ message: "error" });
   }
 };
 
@@ -23,9 +23,9 @@ const changeTaskInfo = async (req, res) => {
   const { _id, text } = req.body;
   try {
     const result = await Task.updateOne({ _id: _id }, { $set: { _id, text } });
-    res.send(result);
+    res.status(200).send(result);
   } catch (error) {
-    res.status(404).send({ message: "error" });
+    res.status(400).send({ message: "error" });
   }
 };
 
@@ -36,18 +36,18 @@ const changeTaskCheckbox = async (req, res) => {
       { _id: _id },
       { $set: { _id, isCheck } }
     );
-    res.send(result);
+    res.status(200).send(result);
   } catch (error) {
-    res.status(404).send({ message: "error" });
+    res.status(400).send({ message: "error" });
   }
 };
 
 const deleteTask = async (req, res) => {
   try {
     const result = await Task.deleteOne(req.body);
-    res.send(result);
+    res.status(200).send(result);
   } catch (error) {
-    res.status(404).send({ message: "error" });
+    res.status(400).send({ message: "error" });
   }
 };
 
